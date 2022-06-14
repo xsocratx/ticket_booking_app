@@ -1,4 +1,4 @@
-package com.example.ticketapp.model;
+package com.example.ticketapp.entities;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -7,30 +7,31 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-@Entity(name = "user")
-@Table(name = "USER")
+@Entity(name = "users")
+@Table(name = "USERS")
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name", length = 100)
     private String name;
 
     @Column(name = "surname", length = 100)
-    private String surName;
+    private String surname;
 
-    public User(){
+    public Users(){
     }
 
-    public User(String name, String surName){
+    public Users(String name, String surName){
         this.name = name;
-        this.surName = surName;
+        this.surname = surName;
     }
 
 }
