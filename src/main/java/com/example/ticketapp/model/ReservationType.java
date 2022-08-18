@@ -1,32 +1,21 @@
 package com.example.ticketapp.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.*;
-
-import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "RESERVATION_TYPE")
-@Getter
-@Setter
-public class ReservationType {
+public enum ReservationType {
+    ADULT("Adult", new BigDecimal(25.0)), STUDENT("Student", new BigDecimal(18.0)), CHILD("Child", new BigDecimal(12.50));
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private final String key;
+    private final BigDecimal value;
 
-    @Column(name = "name", length = 35, nullable = false)
-    private String name;
-
-    @Column(name = "price", nullable = false)
-    private BigDecimal price;
-
-    @OneToMany(mappedBy = "reservationType")
-    @JsonManagedReference
-    private List<Reservation> reservations;
-
+    ReservationType(String key, BigDecimal value){
+        this.key = key;
+        this.value = value;
+    }
+    public String getKey(){
+        return key;
+    }
+    public BigDecimal getValue(){
+        return value;
+    }
 }

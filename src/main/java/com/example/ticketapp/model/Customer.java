@@ -33,4 +33,8 @@ public class Customer {
     @JsonManagedReference
     private List<Reservation> reservations;
 
+    public Customer(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }

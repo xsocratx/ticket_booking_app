@@ -27,9 +27,6 @@ public class Reservation {
     @Column(name = "seat_id", nullable = false, insertable=false, updatable = false)
     private Integer seatId;
 
-    @Column(name = "reservation_type_id", nullable = false, insertable = false, updatable = false)
-    private Integer reservationTypeId;
-
     @ManyToOne
     @JoinColumn(name = "scheduled_movie_id", nullable = false)
     @JsonBackReference
@@ -45,9 +42,15 @@ public class Reservation {
     @JsonBackReference
     private Seat seat;
 
-    @ManyToOne
-    @JoinColumn(name = "reservation_type_id", nullable = false)
-    @JsonBackReference
+    @Column(name = "reservation_type")
+    @Enumerated(EnumType.STRING)
     private ReservationType reservationType;
+
+    public Reservation(final Integer scheduledMovieId, final Integer customerId, final Integer seatId, final ReservationType reservationType) {
+        this.scheduledMovieId = scheduledMovieId;
+        this.customerId = customerId;
+        this.seatId = seatId;
+        this.reservationType = reservationType;
+    }
 
 }

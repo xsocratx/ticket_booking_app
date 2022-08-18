@@ -1,8 +1,9 @@
 package com.example.ticketapp.services;
 
+import com.example.ticketapp.dto.ReservationDto;
 import com.example.ticketapp.model.Reservation;
 
 public interface ReservationService {
 
-    Reservation makeReservation();
+    void makeReservation(ReservationDto reservationDto);
 }

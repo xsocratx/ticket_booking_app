@@ -18,16 +18,16 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "name", length = 70, nullable = false)
-    private String name;
+    @Column(name = "name_movie", length = 70)
+    private String nameMovie;
 
-    @Column(name = "description", nullable = false, length = 255)
+    @Column(name = "description", length = 255)
     private String description;
 
-    @Column(name = "minutes", nullable = false)
+    @Column(name = "minutes")
     private Integer minutes;
 
-    @Column(name = "published_year", nullable = false)
+    @Column(name = "published_year")
     private Integer publishedYear;
 
     @OneToMany(mappedBy = "movie")
